@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    # アプリの設定
+    front:
+      # コンテナ名の指定
+      container_name: nextc
+      # Dockerfileのあるディレクトリパスを指定
+      build: .
+      # 標準入出力デバイスを設定
+      tty: true
+      # ポートの指定（外部からアクセス時のポート：コンテナからアクセス時のポート）
+      ports:
+        - "3000:3000"
+      # データの永続化（ローカルのカレントディレクトリにマウント）
+      volumes:
+        - .:/next
+      # コマンド実行
+      command: yarn dev
